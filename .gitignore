@@ -83,3 +83,6 @@ jacoco.exec
 ####################################
 tmp/
 temp/
+
+ziad_gitaccess
+ziad_gitaccess.pub
