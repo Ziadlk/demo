@@ -15,4 +15,8 @@ public interface UserService {
     List<UserResponseDTO> getUserByOrganisation(Organisation type, String name);
 
     UserResponseDTO patchuser(UserRequestDTO dto);
+
+    List<UserResponseDTO> getByType(Organisation type);
+
+    List<UserResponseDTO> getByName(String name);
 }

@@ -6,6 +6,7 @@ import com.elk.demo.service.contract.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,4 +45,31 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO patchuser(UserRequestDTO dto) {
         return userMapper.toDto(userRepository.patchUser(dto));
     }
+
+
+    @Override
+    public List<UserResponseDTO> getByName(String name) {
+        List<User> users = userRepository.findAll();
+        List<User> temp = new ArrayList<>();
+        for (int i = 0; i < userRepository.count(); i++){
+            if (users.get(i).getName().equals(name))
+                temp.add(users.get(i));
+        }
+        List<UserResponseDTO> response = userMapper.toDtoList(temp);
+        return response;
+    }
+
+    @Override
+    public List<UserResponseDTO> getByType(Organisation type) {
+        List<User> users = userRepository.findAll();
+        List<User> temp = new ArrayList<>();
+        for (int i=0 ; i < userRepository.count(); i++) {
+            if (users.get(i).getOrg().equals(type)) {
+                temp.add(users.get(i));
+            }
+        }
+        List<UserResponseDTO> response = userMapper.toDtoList(temp);
+        return response;
+    }
+
 }
