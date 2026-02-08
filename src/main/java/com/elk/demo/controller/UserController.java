@@ -35,17 +35,5 @@ public class UserController {
     public UserResponseDTO patchUser(@RequestBody UserRequestDTO request) {
         return userService.patchuser(request);
     }
-
-    @GetMapping(value="bytype/{type}")
-    public List<UserResponseDTO> getByType(@PathVariable Organisation type) {
-        return userService.getByType(type);
-    }
-
-    @GetMapping(value="byname/{name}")
-    public List<UserResponseDTO> getByName(@PathVariable String name) {
-        return userService.getByName(name);
-    }
-
-
 }
 
